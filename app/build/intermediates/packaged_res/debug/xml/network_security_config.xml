@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Allow cleartext traffic to local IP for development/LAN -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">10.30.12.249</domain>
+        <domain includeSubdomains="true">192.168.1.0</domain>
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">127.0.0.1</domain>
+    </domain-config>
+    
+    <!-- Block cleartext for everything else (security best practice) -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">*.com</domain>
+        <domain includeSubdomains="true">*.org</domain>
+    </domain-config>
+</network-security-config>

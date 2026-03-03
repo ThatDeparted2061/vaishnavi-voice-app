@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:1:1-22:12
-INJECTED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:1:1-22:12
-INJECTED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:1:1-22:12
-INJECTED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:1:1-22:12
+ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:1:1-23:12
+INJECTED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:1:1-23:12
+INJECTED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:1:1-23:12
+INJECTED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:1:1-23:12
 MERGED from [com.google.android.material:material:1.12.0] /home/halyee/.gradle/caches/transforms-4/c199fb6b5d1d70ea22bd1c73ce9af778/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/halyee/.gradle/caches/transforms-4/c2865e6168166d1ba2f5f5682f06d2dc/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] /home/halyee/.gradle/caches/transforms-4/55ba0d23d0aacedddf37f3d6e962ff60/transformed/appcompat-resources-1.7.0/AndroidManifest.xml:2:1-7:12
@@ -65,8 +65,8 @@ ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/And
 	android:name
 		ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:4:22-64
 application
-ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:6:5-21:19
-INJECTED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:6:5-21:19
+ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:6:5-22:19
+INJECTED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:6:5-22:19
 MERGED from [com.google.android.material:material:1.12.0] /home/halyee/.gradle/caches/transforms-4/c199fb6b5d1d70ea22bd1c73ce9af778/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] /home/halyee/.gradle/caches/transforms-4/c199fb6b5d1d70ea22bd1c73ce9af778/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /home/halyee/.gradle/caches/transforms-4/c2865e6168166d1ba2f5f5682f06d2dc/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -99,22 +99,24 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /home/halyee/.gradle/caches
 		ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:7:9-35
 	android:theme
 		ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:12:9-47
+	android:networkSecurityConfig
+		ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:13:9-69
 activity#com.vaishnavi.voice.MainActivity
-ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:13:9-20:20
+ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:14:9-21:20
 	android:exported
-		ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:15:13-36
+		ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:16:13-36
 	android:name
-		ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:14:13-41
+		ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:15:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:16:13-19:29
+ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:17:13-20:29
 action#android.intent.action.MAIN
-ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:17:17-69
+ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:18:17-69
 	android:name
-		ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:17:25-66
+		ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:18:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:18:17-77
+ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:19:17-77
 	android:name
-		ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:18:27-74
+		ADDED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml:19:27-74
 uses-sdk
 INJECTED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/halyee/.openclaw/workspace/vaishnavi-voice-app/app/src/main/AndroidManifest.xml

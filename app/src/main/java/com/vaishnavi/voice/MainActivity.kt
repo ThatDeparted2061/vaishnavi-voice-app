@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), SpeechRecognizerManager.Listener {
     private lateinit var tts: TtsManager
     private val backend = BackendClient(
         BackendClient.BackendMode.OPENCLAW_HTTP,
-        "http://10.30.12.249:8080"
+        "http://10.30.12.249:9000"
     )
 
 

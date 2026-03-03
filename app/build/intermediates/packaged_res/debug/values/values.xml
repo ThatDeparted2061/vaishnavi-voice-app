@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#0F0F14</color>
+    <color name="onBackground">#EDEDF7</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="primary">#7C4DFF</color>
+    <string name="app_name">Vaishnavi</string>
+    <style name="Theme.Vaishnavi" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:textColor">@color/onBackground</item>
+    </style>
+</resources>

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.vaishnavi.voice.app-merged_res-33:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.vaishnavi.voice.app-main-35:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/halyee/.gradle/daemon/8.6/com.vaishnavi.voice.app-merged_res-33:/drawable_bg_mic.xml.flat",
+        "source": "/home/halyee/.gradle/daemon/8.6/com.vaishnavi.voice.app-main-35:/drawable/bg_mic.xml"
+    },
+    {
+        "merged": "com.vaishnavi.voice.app-merged_res-33:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.vaishnavi.voice.app-main-35:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.vaishnavi.voice.app-merged_res-33:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.vaishnavi.voice.app-main-35:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.vaishnavi.voice.app-merged_res-33:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.vaishnavi.voice.app-main-35:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/halyee/.gradle/daemon/8.6/com.vaishnavi.voice.app-merged_res-33:/layout_activity_main.xml.flat",
+        "source": "/home/halyee/.gradle/daemon/8.6/com.vaishnavi.voice.app-main-35:/layout/activity_main.xml"
+    }
+]

@@ -20,7 +20,11 @@ class MainActivity : AppCompatActivity(), SpeechRecognizerManager.Listener {
 
     private lateinit var speech: SpeechRecognizerManager
     private lateinit var tts: TtsManager
-    private val backend = BackendClient()
+    private val backend = BackendClient(
+        BackendClient.BackendMode.OPENCLAW_HTTP,
+        "http://10.30.12.249:8080"
+    )
+
 
     private var currentState: VoiceState = VoiceState.IDLE
 

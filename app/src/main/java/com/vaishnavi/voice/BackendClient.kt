@@ -2,14 +2,15 @@ package com.vaishnavi.voice
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
 import org.json.JSONObject
 
 class BackendClient(
-    private val backendMode: BackendMode = BackendMode.LOCAL_ECHO,
-    private val backendUrl: String = "http://localhost:8080"  // OpenClaw default
+    val backendMode: BackendMode = BackendMode.LOCAL_ECHO,
+    val backendUrl: String = "http://localhost:8080"  // OpenClaw default
 ) {
     
     enum class BackendMode {
@@ -131,10 +132,22 @@ class BackendClient(
     }
     
     /**
-     * Configure backend mode
+     * Check if the remote backend is reachable by calling its /health endpoint.
+     * Returns true if the server responds with HTTP 200, false otherwise.
+     * Only meaningful for OPENCLAW_HTTP mode.
      */
-    fun setBackendMode(mode: BackendMode) {
-        // Update the backing mode (in production, this would need a rebuild)
-        // For now, we pass it in constructor
+    suspend fun checkHealth(): Boolean = withContext(Dispatchers.IO) {
+        if (backendMode != BackendMode.OPENCLAW_HTTP) return@withContext false
+        return@withContext try {
+            val url = URL("$backendUrl/health")
+            val connection = url.openConnection() as HttpURLConnection
+            connection.requestMethod = "GET"
+            connection.connectTimeout = 3000
+            connection.readTimeout = 3000
+            connection.connect()
+            connection.responseCode == HttpURLConnection.HTTP_OK
+        } catch (e: IOException) {
+            false
+        }
     }
 }

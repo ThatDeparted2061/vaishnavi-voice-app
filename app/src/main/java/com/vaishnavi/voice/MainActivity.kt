@@ -20,11 +20,12 @@ class MainActivity : AppCompatActivity(), SpeechRecognizerManager.Listener {
 
     private lateinit var speech: SpeechRecognizerManager
     private lateinit var tts: TtsManager
-    private val backend = BackendClient(
-        BackendClient.BackendMode.OPENCLAW_HTTP,
-        "http://10.30.12.249:9000"
-    )
 
+    // Default to LOCAL_ECHO so no remote server connection is made on startup.
+    // Switch ON connects to the remote OpenClaw backend on port 9000.
+    @Volatile private var backend = BackendClient(BackendClient.BackendMode.LOCAL_ECHO)
+
+    private val remoteBackendUrl = "http://10.30.12.249:9000"
 
     private var currentState: VoiceState = VoiceState.IDLE
 
@@ -51,6 +52,22 @@ class MainActivity : AppCompatActivity(), SpeechRecognizerManager.Listener {
 
         micButton.setOnClickListener {
             if (currentState == VoiceState.LISTENING) stopListening() else checkPermissionAndStart()
+        }
+
+        // Wire the switch: OFF = LOCAL_ECHO (no server needed),
+        // ON = OPENCLAW_HTTP with a one-time health check.
+        connectSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                backend = BackendClient(BackendClient.BackendMode.OPENCLAW_HTTP, remoteBackendUrl)
+                stateText.text = "Checking server…"
+                lifecycleScope.launch {
+                    val healthy = backend.checkHealth()
+                    stateText.text = if (healthy) "Server connected" else "Server unreachable"
+                }
+            } else {
+                backend = BackendClient(BackendClient.BackendMode.LOCAL_ECHO)
+                stateText.text = "Tap to speak"
+            }
         }
 
         setState(VoiceState.IDLE)

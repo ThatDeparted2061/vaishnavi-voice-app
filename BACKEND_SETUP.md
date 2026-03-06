@@ -9,6 +9,46 @@ Vaishnavi is a **voice-only Android assistant** that supports 4 backend modes:
 3. **Telegram Bot** — Send messages to Telegram
 4. **Ollama Local** — Use local Llama 3.1:8B model
 
+The repo also ships a minimal **dev backend server** (`server.py`) that runs
+on port 9000 and can be started or stopped independently of OpenClaw.
+
+---
+
+## 🛑 Stopping the Dev Server (port 9000)
+
+If you started `server.py` previously and want to stop it — or if you keep
+receiving **"Vaishnavi API health check"** notifications from OpenClaw — use
+one of these methods:
+
+### Method 1 — stop script (recommended)
+
+```bash
+cd vaishnavi-voice-app
+./stop-server.sh
+```
+
+### Method 2 — PID file
+
+```bash
+kill $(cat .vaishnavi.pid)
+```
+
+### Method 3 — kill by port (if PID file is missing)
+
+```bash
+# Linux
+kill $(lsof -ti tcp:9000)
+# or
+kill $(ss -tlnp 'sport = :9000' | awk '/LISTEN/{match($0,/pid=([0-9]+)/,a); print a[1]}')
+```
+
+> **Why is OpenClaw still showing health-check notifications?**
+> OpenClaw monitors services registered with it. Once `server.py` is stopped
+> the health check will return "Connection refused" and OpenClaw will stop
+> reporting it as healthy. If you no longer need Vaishnavi registered in
+> OpenClaw, remove the Vaishnavi service entry from your OpenClaw config and
+> restart the OpenClaw process (`openclaw restart` or kill + relaunch).
+
 ---
 
 ## Setup Instructions
@@ -231,7 +271,84 @@ App requests permissions at runtime when user taps mic button.
 
 ---
 
+## Dev Server (`server.py`)
+
+The repo includes a minimal Python backend (`server.py`) that mirrors what
+the Android app expects from OpenClaw. Use it for local testing without
+needing OpenClaw installed.
+
+### Start
+
+```bash
+cd vaishnavi-voice-app
+python3 server.py
+```
+
+Output:
+```
+[vaishnavi] Backend server started
+[vaishnavi]   Health   : http://localhost:9000/health
+[vaishnavi]   Messages : http://localhost:9000/api/message
+[vaishnavi]   PID      : 12345 (saved to .vaishnavi.pid)
+[vaishnavi] Press Ctrl+C or run ./stop-server.sh to stop.
+```
+
+### Stop
+
+```bash
+# Recommended — stop script handles both PID file and port scan
+./stop-server.sh
+
+# Manual — use the PID saved on startup
+kill $(cat .vaishnavi.pid)
+```
+
+> **Note:** The server writes its PID to `.vaishnavi.pid` in the project
+> root. If the process dies unexpectedly the stale file is harmless — 
+> `stop-server.sh` detects and removes it automatically.
+
+### Test endpoints
+
+```bash
+# Health check
+curl http://localhost:9000/health
+# → {"status": "ok", "mode": "echo", "port": 9000}
+
+# Echo a message
+curl -X POST http://localhost:9000/api/message \
+     -H "Content-Type: application/json" \
+     -d '{"message": "hello"}'
+# → {"reply": "You said: hello"}
+```
+
+---
+
 ## Troubleshooting
+
+### "Vaishnavi API health check" notifications keep appearing in OpenClaw
+
+OpenClaw polls `http://localhost:9000/health` on a schedule and reports
+back via Telegram when the endpoint is reachable.  To silence the
+notifications, stop the server:
+
+```bash
+# Stop the server (clears the process that answers /health)
+./stop-server.sh
+```
+
+After stopping, OpenClaw's next health check will return "Connection
+refused" and the healthy-status message will no longer be sent.
+
+If you want to permanently remove the Vaishnavi service from OpenClaw's
+monitoring list, remove the Vaishnavi entry from your OpenClaw
+configuration and restart OpenClaw:
+
+```bash
+# Restart OpenClaw (stops health-check scheduling for removed services)
+openclaw restart
+# — or kill the process and relaunch it manually —
+```
+
 
 ### "Connection error: Connection refused"
 - Backend service not running
@@ -353,6 +470,8 @@ POST http://localhost:8080/api/message
 | `TtsManager.kt` | TTS (text → speech, en-IN) |
 | `VoiceState.kt` | State enum (IDLE/LISTENING/THINKING/SPEAKING) |
 | `activity_main.xml` | UI layout |
+| `server.py` | Dev backend server (port 9000, echo mode) |
+| `stop-server.sh` | Stop the dev backend server |
 
 ---
 

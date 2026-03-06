@@ -1,0 +1,18 @@
+# Runtime file written by server.py — never commit this
+.vaishnavi.pid
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Android build outputs
+build/
+.gradle/
+local.properties
+*.apk
+
+# IDE
+.idea/
+*.iml
+.DS_Store
